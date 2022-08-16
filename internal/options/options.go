@@ -15,15 +15,15 @@ type Options struct {
 }
 
 const (
-	optionDecode       = "decode"
+	optionDecode = "decode"
 
 	invalidOptionValue = "invalid option value"
 )
 
 var supportedOptions = []Option{
 	Option{
-		Key: optionDecode,
-		Val: invalidOptionValue,
+		Key:         optionDecode,
+		Val:         invalidOptionValue,
 		Description: "decode the hex/bin RISC-V instruction to asm code",
 	},
 }
@@ -44,8 +44,8 @@ func CreateOptions() Options {
 	for i, v := range values {
 		if v != invalidOptionValue {
 			options.Options = append(options.Options, Option{
-				Key: supportedOptions[i].Key,
-				Val: v,
+				Key:         supportedOptions[i].Key,
+				Val:         v,
 				Description: supportedOptions[i].Description,
 			})
 		}
