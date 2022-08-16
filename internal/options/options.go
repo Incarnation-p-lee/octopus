@@ -4,12 +4,14 @@ import (
 	"flag"
 )
 
+// Option indicates the key, value and description of one option.
 type Option struct {
 	Key         string
 	Val         string
 	Description string
 }
 
+// Options indicates the collection of Option.
 type Options struct {
 	Options []Option
 }
@@ -28,6 +30,7 @@ var supportedOptions = []Option{
 	},
 }
 
+// CreateOptions will parse the cmd parameters into Options, not supported will be ignore.
 func CreateOptions() Options {
 	options := Options{
 		Options: []Option{},
