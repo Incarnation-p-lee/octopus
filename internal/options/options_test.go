@@ -1,8 +1,8 @@
 package options
 
 import (
-	"os"
 	"github.com/Incarnation-p-lee/cachalot/pkg/assert"
+	"os"
 	"testing"
 )
 
@@ -14,4 +14,3 @@ func TestCreateOptions(t *testing.T) {
 	assert.IsNotNil(t, testOptions.Options, "options should not be nil")
 	assert.IsEqual(t, 1, len(testOptions.Options), "no arguments should have emtpy options")
 }
-
