@@ -44,6 +44,15 @@ const (
 
 	funct7Offset = 25
 	funct7Mask   = uint32(0x7f) << funct7Offset
+
+	rdOffset = 7
+	rdMask   = uint32(0x1f) << rdOffset
+
+	rs1Offset = 15
+	rs1Mask   = uint32(0x1f) << rs1Offset
+
+	rs2Offset = 20
+	rs2Mask   = uint32(0x1f) << rs2Offset
 )
 
 func getBitMask(binary uint32, mask, offset uint32) uint32 {
@@ -60,4 +69,31 @@ func (instr *RISCVInstruction) getFunct3() uint32 {
 
 func (instr *RISCVInstruction) getFunct7() uint32 {
 	return getBitMask(instr.EncodedBinary, funct7Mask, funct7Offset)
+}
+
+func (instr *RISCVInstruction) getRd() int {
+	switch instr.MetaData.InstructionFormat {
+	case ISAFormatRegister, ISAFormatLoad, ISAFormatLongImmediate, ISAFormatUnconditionalJump:
+		return int(getBitMask(instr.EncodedBinary, rdMask, rdOffset))
+	}
+
+	return invalidInstructionValue
+}
+
+func (instr *RISCVInstruction) getRs1() int {
+	switch instr.MetaData.InstructionFormat {
+	case ISAFormatRegister, ISAFormatLoad, ISAFormatStore, ISAFormatConditionalJump:
+		return int(getBitMask(instr.EncodedBinary, rs1Mask, rs1Offset))
+	}
+
+	return invalidInstructionValue
+}
+
+func (instr *RISCVInstruction) getRs2() int {
+	switch instr.MetaData.InstructionFormat {
+	case ISAFormatRegister, ISAFormatStore, ISAFormatConditionalJump:
+		return int(getBitMask(instr.EncodedBinary, rs2Mask, rs2Offset))
+	}
+
+	return invalidInstructionValue
 }
