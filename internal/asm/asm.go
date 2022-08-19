@@ -1,10 +1,12 @@
 package asm
 
+// RISCVInstruction indicates the structed instruction of RISCV.
 type RISCVInstruction struct {
 	EncodedBinary uint32
 	MetaData      RISCVInstructionMetaData
 }
 
+// RISCVInstructionMetaData indicates the structed instruction of RISCV metadata.
 type RISCVInstructionMetaData struct {
 	Opcode            int
 	InstructionClass  string
@@ -15,13 +17,20 @@ type RISCVInstructionMetaData struct {
 }
 
 const (
+	// ISAClassRV32I indicates RISCV RV32I.
 	ISAClassRV32I = "RV32I"
 
+	// ISAFormatRegister indicates RISCV register format.
 	ISAFormatRegister = "Register(R)"
+	// ISAFormatLoad indicates RISCV load and short imm format.
 	ISAFormatLoad = "Load(I)"
+	// ISAFormatStore indicates RISCV store format.
 	ISAFormatStore = "Store(S)"
+	// ISAFormatConditionalJump indicates RISCV conditional jump format.
 	ISAFormatConditionalJump = "ConditionalJump(B)"
+	// ISAFormatLongImmediate indicates RISCV long imm format.
 	ISAFormatLongImmediate = "LongImmediate(U)"
+	// ISAFormatUnconditionalJump indicates RISCV unconditional jump format.
 	ISAFormatUnconditionalJump = "UnconditionalJump(J)"
 
 	unknownInstructionName = "unknown instruction name"
