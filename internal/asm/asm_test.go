@@ -9,7 +9,7 @@ func TestGetOpcode(t *testing.T) {
 	testOpcodes := []struct {
 		binary         uint32
 		expectedOpcode uint32
-	} {
+	}{
 		{
 			uint32(0x0),
 			uint32(0x0),
@@ -42,7 +42,7 @@ func TestGetFunct3(t *testing.T) {
 	testFunct3s := []struct {
 		binary         uint32
 		expectedFunct3 uint32
-	} {
+	}{
 		{
 			uint32(0x0),
 			uint32(0x0),
@@ -75,7 +75,7 @@ func TestGetFunct7(t *testing.T) {
 	testFunct7s := []struct {
 		binary         uint32
 		expectedFunct7 uint32
-	} {
+	}{
 		{
 			uint32(0x0),
 			uint32(0x0),
