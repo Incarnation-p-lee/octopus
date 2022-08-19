@@ -33,17 +33,17 @@ const (
 	// ISAFormatUnconditionalJump indicates RISCV unconditional jump format.
 	ISAFormatUnconditionalJump = "UnconditionalJump(J)"
 
-	unknownInstructionName = "unknown instruction name"
+	unknownInstructionName  = "unknown instruction name"
 	invalidInstructionValue = -1
 
 	opcodeOffset = 0
-	opcodeMask = uint32(0x7f) << opcodeOffset
+	opcodeMask   = uint32(0x7f) << opcodeOffset
 
 	funct3Offset = 12
-	funct3Mask = uint32(0x7) << funct3Offset
+	funct3Mask   = uint32(0x7) << funct3Offset
 
 	funct7Offset = 25
-	funct7Mask = uint32(0x7f) << funct7Offset
+	funct7Mask   = uint32(0x7f) << funct7Offset
 )
 
 func getBitMask(binary uint32, mask, offset uint32) uint32 {
