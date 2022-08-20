@@ -113,35 +113,35 @@ func TestGetRd(t *testing.T) {
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x80),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatRegister},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatRegister},
 			},
 			expectedRd: 0x1,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x80),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatLoad},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatLoad},
 			},
 			expectedRd: 0x1,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x80),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatLongImmediate},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatLongImmediate},
 			},
 			expectedRd: 0x1,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xffff),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatUnconditionalJump},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatUnconditionalJump},
 			},
 			expectedRd: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xffff),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatStore},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatStore},
 			},
 			expectedRd: -1,
 		},
@@ -163,35 +163,35 @@ func TestGetRs1(t *testing.T) {
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xffff),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatRegister},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatRegister},
 			},
 			expectedRs1: 0x1,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xfffff),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatLoad},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatLoad},
 			},
 			expectedRs1: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xfffff),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatStore},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatStore},
 			},
 			expectedRs1: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x1fffff),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatConditionalJump},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatConditionalJump},
 			},
 			expectedRs1: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xffffff),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatLongImmediate},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatLongImmediate},
 			},
 			expectedRs1: -1,
 		},
@@ -212,28 +212,28 @@ func TestGetRs2(t *testing.T) {
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x1fffff),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatRegister},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatRegister},
 			},
 			expectedRs2: 0x1,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x1ffffff),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatStore},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatStore},
 			},
 			expectedRs2: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x3ffffff),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatConditionalJump},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatConditionalJump},
 			},
 			expectedRs2: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xffffff),
-				MetaData:      RISCVInstructionMetaData{InstructionFormat: ISAFormatLongImmediate},
+				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatLongImmediate},
 			},
 			expectedRs2: -1,
 		},
