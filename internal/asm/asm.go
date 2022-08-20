@@ -1,19 +1,24 @@
 package asm
 
-// RISCVInstruction indicates the structed instruction of RISCV.
-type RISCVInstruction struct {
-	EncodedBinary uint32
-	MetaData      RISCVInstructionMetaData
-}
-
-// RISCVInstructionMetaData indicates the structed instruction of RISCV metadata.
-type RISCVInstructionMetaData struct {
+// RISCVInstructionMetadata indicates the structed instruction of RISCV metadata.
+type RISCVInstructionMetadata struct {
 	Opcode            int
 	InstructionClass  string
 	InstructionFormat string
 	InstructionName   string
-	Funct3ToMetaData  map[int]RISCVInstructionMetaData
-	Funct7ToMetaData  map[int]RISCVInstructionMetaData
+}
+
+// RISCVInstruction indicates the structed instruction of RISCV.
+type RISCVInstruction struct {
+	EncodedBinary uint32
+	Metadata      RISCVInstructionMetadata
+}
+
+// RISCVInstructionEntity indicates the nested instruction entity of RISCV metadata.
+type RISCVInstructionEntity struct {
+	Metadata         RISCVInstructionMetadata
+	Funct3ToMetadata map[int]RISCVInstructionMetadata
+	Funct7ToMetadata map[int]RISCVInstructionMetadata
 }
 
 const (
@@ -72,7 +77,7 @@ func (instr *RISCVInstruction) getFunct7() uint32 {
 }
 
 func (instr *RISCVInstruction) getRd() int {
-	switch instr.MetaData.InstructionFormat {
+	switch instr.Metadata.InstructionFormat {
 	case ISAFormatRegister, ISAFormatLoad, ISAFormatLongImmediate, ISAFormatUnconditionalJump:
 		return int(getBitMask(instr.EncodedBinary, rdMask, rdOffset))
 	}
@@ -81,7 +86,7 @@ func (instr *RISCVInstruction) getRd() int {
 }
 
 func (instr *RISCVInstruction) getRs1() int {
-	switch instr.MetaData.InstructionFormat {
+	switch instr.Metadata.InstructionFormat {
 	case ISAFormatRegister, ISAFormatLoad, ISAFormatStore, ISAFormatConditionalJump:
 		return int(getBitMask(instr.EncodedBinary, rs1Mask, rs1Offset))
 	}
@@ -90,7 +95,7 @@ func (instr *RISCVInstruction) getRs1() int {
 }
 
 func (instr *RISCVInstruction) getRs2() int {
-	switch instr.MetaData.InstructionFormat {
+	switch instr.Metadata.InstructionFormat {
 	case ISAFormatRegister, ISAFormatStore, ISAFormatConditionalJump:
 		return int(getBitMask(instr.EncodedBinary, rs2Mask, rs2Offset))
 	}
