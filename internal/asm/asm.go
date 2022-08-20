@@ -60,33 +60,33 @@ const (
 	rs2Mask   = uint32(0x1f) << rs2Offset
 
 	typeIImm11to0Offset = 20
-	typeIImm11to0Mask = uint32(0xfff) << typeIImm11to0Offset
+	typeIImm11to0Mask   = uint32(0xfff) << typeIImm11to0Offset
 
-	typeSImm4To0Offset = 7
-	typeSImm4To0Mask = uint32(0x1f) << typeSImm4To0Offset
+	typeSImm4To0Offset  = 7
+	typeSImm4To0Mask    = uint32(0x1f) << typeSImm4To0Offset
 	typeSImm11To5Offset = 20
-	typeSImm11To5Mask = uint32(0x7f) << typeSImm11To5Offset
+	typeSImm11To5Mask   = uint32(0x7f) << typeSImm11To5Offset
 
-	typeBImm4To1Offset = 8
-	typeBImm4To1Mask = uint32(0xf) << typeBImm4To1Offset
+	typeBImm4To1Offset  = 8
+	typeBImm4To1Mask    = uint32(0xf) << typeBImm4To1Offset
 	typeBImm10To5Offset = 25
-	typeBImm10To5Mask = uint32(0x3f) << typeBImm10To5Offset
-	typeBImm11Offset = 7
-	typeBImm11Mask = uint32(0x1) << typeBImm11Offset
-	typeBImm12Offset = 31
-	typeBImm12Mask = uint32(0x1) << typeBImm12Offset
+	typeBImm10To5Mask   = uint32(0x3f) << typeBImm10To5Offset
+	typeBImm11Offset    = 7
+	typeBImm11Mask      = uint32(0x1) << typeBImm11Offset
+	typeBImm12Offset    = 31
+	typeBImm12Mask      = uint32(0x1) << typeBImm12Offset
 
 	typeUImm32to12Offset = 12
-	typeUImm32to12Mask = uint32(0xfffff) << typeUImm32to12Offset
+	typeUImm32to12Mask   = uint32(0xfffff) << typeUImm32to12Offset
 
-	typeJImm10To1Offset = 21
-	typeJImm10To1Mask = uint32(0x3ff) << typeJImm10To1Offset
-	typeJImm11Offset = 20
-	typeJImm11Mask = uint32(0x1) << typeJImm11Offset
+	typeJImm10To1Offset  = 21
+	typeJImm10To1Mask    = uint32(0x3ff) << typeJImm10To1Offset
+	typeJImm11Offset     = 20
+	typeJImm11Mask       = uint32(0x1) << typeJImm11Offset
 	typeJImm19To12Offset = 12
-	typeJImm19To12Mask = uint32(0xff) << typeJImm19To12Offset
-	typeJImm20Offset = 31
-	typeJImm20Mask = uint32(0x1) << typeJImm20Offset
+	typeJImm19To12Mask   = uint32(0xff) << typeJImm19To12Offset
+	typeJImm20Offset     = 31
+	typeJImm20Mask       = uint32(0x1) << typeJImm20Offset
 )
 
 func getBitMask(binary uint32, mask, offset uint32) uint32 {
