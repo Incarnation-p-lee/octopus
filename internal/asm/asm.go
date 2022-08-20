@@ -16,9 +16,9 @@ type RISCVInstruction struct {
 
 // RISCVInstructionEntity indicates the nested instruction entity of RISCV metadata.
 type RISCVInstructionEntity struct {
-	Metadata  RISCVInstructionMetadata
-	Funct3ToMetadata  map[int]RISCVInstructionMetadata
-	Funct7ToMetadata  map[int]RISCVInstructionMetadata
+	Metadata         RISCVInstructionMetadata
+	Funct3ToMetadata map[int]RISCVInstructionMetadata
+	Funct7ToMetadata map[int]RISCVInstructionMetadata
 }
 
 const (
