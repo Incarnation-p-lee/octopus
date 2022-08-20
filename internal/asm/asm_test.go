@@ -113,35 +113,35 @@ func TestGetRd(t *testing.T) {
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x80),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatRegister},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeRegister},
 			},
 			expectedRd: 0x1,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x80),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatLoad},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeLoad},
 			},
 			expectedRd: 0x1,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x80),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatLongImmediate},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeLongImmediate},
 			},
 			expectedRd: 0x1,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xffff),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatUnconditionalJump},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeUnconditionalJump},
 			},
 			expectedRd: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xffff),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatStore},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeStore},
 			},
 			expectedRd: -1,
 		},
@@ -163,35 +163,35 @@ func TestGetRs1(t *testing.T) {
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xffff),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatRegister},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeRegister},
 			},
 			expectedRs1: 0x1,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xfffff),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatLoad},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeLoad},
 			},
 			expectedRs1: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xfffff),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatStore},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeStore},
 			},
 			expectedRs1: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x1fffff),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatConditionalJump},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeConditionalJump},
 			},
 			expectedRs1: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xffffff),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatLongImmediate},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeLongImmediate},
 			},
 			expectedRs1: -1,
 		},
@@ -212,28 +212,28 @@ func TestGetRs2(t *testing.T) {
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x1fffff),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatRegister},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeRegister},
 			},
 			expectedRs2: 0x1,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x1ffffff),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatStore},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeStore},
 			},
 			expectedRs2: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0x3ffffff),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatConditionalJump},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeConditionalJump},
 			},
 			expectedRs2: 0x1f,
 		},
 		{
 			instruction: RISCVInstruction{
 				EncodedBinary: uint32(0xffffff),
-				Metadata:      RISCVInstructionMetadata{InstructionFormat: ISAFormatLongImmediate},
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeLongImmediate},
 			},
 			expectedRs2: -1,
 		},
