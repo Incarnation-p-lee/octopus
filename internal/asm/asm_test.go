@@ -1,7 +1,6 @@
 package asm
 
 import (
-	"fmt"
 	"github.com/Incarnation-p-lee/cachalot/pkg/assert"
 	"testing"
 )
@@ -149,7 +148,6 @@ func TestGetRd(t *testing.T) {
 
 	for _, v := range testRds {
 		rd := v.instruction.getRd()
-		fmt.Printf("rd %v from instr %+v\n", rd, v.instruction)
 
 		assert.IsEqual(t, v.expectedRd, rd, "instruction rd should be same")
 	}
@@ -243,5 +241,61 @@ func TestGetRs2(t *testing.T) {
 		rs2 := v.instruction.getRs2()
 
 		assert.IsEqual(t, v.expectedRs2, rs2, "instruction rs2 should be same")
+	}
+}
+
+func TestGetImm(t *testing.T) {
+	testImms := []struct {
+		instruction RISCVInstruction
+		expectedImm int
+	}{
+		{
+			instruction: RISCVInstruction{
+				EncodedBinary: uint32(0xffff0000),
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeLoad},
+			},
+			expectedImm: 0xfff,
+		},
+		{
+			instruction: RISCVInstruction{
+				EncodedBinary: uint32(0xfffff0ff),
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeStore},
+			},
+			expectedImm: 0b111111100001,
+		},
+		{
+			instruction: RISCVInstruction{
+				EncodedBinary: uint32(0x8ffffff0),
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeConditionalJump},
+			},
+			expectedImm: 0b1100011111110,
+		},
+		{
+			instruction: RISCVInstruction{
+				EncodedBinary: uint32(0xfaf0ffff),
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeLongImmediate},
+			},
+			expectedImm: 0xfaf0f000,
+		},
+		{
+			instruction: RISCVInstruction{
+				EncodedBinary: uint32(0xf9f32fff),
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeUnconditionalJump},
+			},
+			expectedImm: 0b100110010111110011110,
+		},
+		{
+			instruction: RISCVInstruction{
+				EncodedBinary: uint32(0xffffff),
+				Metadata:      RISCVInstructionMetadata{InstructionType: ISATypeRegister},
+			},
+			expectedImm: -1,
+		},
+	}
+
+	for _, v := range testImms {
+		imm := v.instruction.getImm()
+
+		assert.IsEqual(t, v.expectedImm, imm, "instruction imm should be same")
 	}
 }
