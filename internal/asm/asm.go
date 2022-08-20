@@ -2,10 +2,10 @@ package asm
 
 // RISCVInstructionMetadata indicates the structed instruction of RISCV metadata.
 type RISCVInstructionMetadata struct {
-	Opcode            int
-	InstructionClass  string
-	InstructionFormat string
-	InstructionName   string
+	Opcode           int
+	InstructionClass string
+	InstructionType  string
+	InstructionName  string
 }
 
 // RISCVInstruction indicates the structed instruction of RISCV.
@@ -25,18 +25,18 @@ const (
 	// ISAClassRV32I indicates RISCV RV32I.
 	ISAClassRV32I = "RV32I"
 
-	// ISAFormatRegister indicates RISCV register format.
-	ISAFormatRegister = "Register(R)"
-	// ISAFormatLoad indicates RISCV load and short imm format.
-	ISAFormatLoad = "Load(I)"
-	// ISAFormatStore indicates RISCV store format.
-	ISAFormatStore = "Store(S)"
-	// ISAFormatConditionalJump indicates RISCV conditional jump format.
-	ISAFormatConditionalJump = "ConditionalJump(B)"
-	// ISAFormatLongImmediate indicates RISCV long imm format.
-	ISAFormatLongImmediate = "LongImmediate(U)"
-	// ISAFormatUnconditionalJump indicates RISCV unconditional jump format.
-	ISAFormatUnconditionalJump = "UnconditionalJump(J)"
+	// ISATypeRegister indicates RISCV register format.
+	ISATypeRegister = "Register(R)"
+	// ISATypeLoad indicates RISCV load and short imm format.
+	ISATypeLoad = "Load(I)"
+	// ISATypeStore indicates RISCV store format.
+	ISATypeStore = "Store(S)"
+	// ISATypeConditionalJump indicates RISCV conditional jump format.
+	ISATypeConditionalJump = "ConditionalJump(B)"
+	// ISATypeLongImmediate indicates RISCV long imm format.
+	ISATypeLongImmediate = "LongImmediate(U)"
+	// ISATypeUnconditionalJump indicates RISCV unconditional jump format.
+	ISATypeUnconditionalJump = "UnconditionalJump(J)"
 
 	unknownInstructionName  = "unknown instruction name"
 	invalidInstructionValue = -1
@@ -77,8 +77,8 @@ func (instr *RISCVInstruction) getFunct7() uint32 {
 }
 
 func (instr *RISCVInstruction) getRd() int {
-	switch instr.Metadata.InstructionFormat {
-	case ISAFormatRegister, ISAFormatLoad, ISAFormatLongImmediate, ISAFormatUnconditionalJump:
+	switch instr.Metadata.InstructionType {
+	case ISATypeRegister, ISATypeLoad, ISATypeLongImmediate, ISATypeUnconditionalJump:
 		return int(getBitMask(instr.EncodedBinary, rdMask, rdOffset))
 	}
 
@@ -86,8 +86,8 @@ func (instr *RISCVInstruction) getRd() int {
 }
 
 func (instr *RISCVInstruction) getRs1() int {
-	switch instr.Metadata.InstructionFormat {
-	case ISAFormatRegister, ISAFormatLoad, ISAFormatStore, ISAFormatConditionalJump:
+	switch instr.Metadata.InstructionType {
+	case ISATypeRegister, ISATypeLoad, ISATypeStore, ISATypeConditionalJump:
 		return int(getBitMask(instr.EncodedBinary, rs1Mask, rs1Offset))
 	}
 
@@ -95,8 +95,8 @@ func (instr *RISCVInstruction) getRs1() int {
 }
 
 func (instr *RISCVInstruction) getRs2() int {
-	switch instr.Metadata.InstructionFormat {
-	case ISAFormatRegister, ISAFormatStore, ISAFormatConditionalJump:
+	switch instr.Metadata.InstructionType {
+	case ISATypeRegister, ISATypeStore, ISATypeConditionalJump:
 		return int(getBitMask(instr.EncodedBinary, rs2Mask, rs2Offset))
 	}
 
