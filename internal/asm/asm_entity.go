@@ -6,18 +6,18 @@ const (
 	opcodeJal   = 0b1101111
 	opcodeJalr  = 0b1100111
 
-	opcodeB     = 0b1100011
-	opcodeBFunct3Beq = 0b000
-	opcodeBFunct3Bne = 0b001
-	opcodeBFunct3Blt = 0b100
-	opcodeBFunct3Bge = 0b101
+	opcodeB           = 0b1100011
+	opcodeBFunct3Beq  = 0b000
+	opcodeBFunct3Bne  = 0b001
+	opcodeBFunct3Blt  = 0b100
+	opcodeBFunct3Bge  = 0b101
 	opcodeBFunct3Bltu = 0b110
 	opcodeBFunct3Bgeu = 0b111
 
-	opcodeLoad = 0b0000011
-	opcodeLoadFunct3Lb = 0b000
-	opcodeLoadFunct3Lh = 0b001
-	opcodeLoadFunct3Lw = 0b010
+	opcodeLoad          = 0b0000011
+	opcodeLoadFunct3Lb  = 0b000
+	opcodeLoadFunct3Lh  = 0b001
+	opcodeLoadFunct3Lw  = 0b010
 	opcodeLoadFunct3Lbu = 0b100
 	opcodeLoadFunct3Lhu = 0b101
 )
